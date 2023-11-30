@@ -1,3 +1,3 @@
 #!/bin/bash
 
-unzip qimie.zip
+unzip qimie.rar
