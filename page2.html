@@ -11,7 +11,24 @@
     <link rel="stylesheet" href="header.html"> <!-- Include the header file -->
     <style>
         /* Your existing styles */
-        body {
+       /* Add styles for the form layout */
+        #contactForm label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #contactForm input,
+        #contactForm textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        #contactForm textarea {
+            height: 8cm;
+        }
+	   body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
@@ -166,15 +183,26 @@
 
     <section id="contact" class="contact-box">
         <h2>Contact Me</h2>
-        <form action="#" method="post">
-            <!-- Form fields go here -->
-            <button type="submit">Submit</button>
+        <form id="contactForm" action="#" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" style="width: 12cm; height: 4cm;" required></textarea>
+
+            <button type="button" onclick="submitForm()">Submit</button>
         </form>
         <ul>
             <li>Email: <a href="mailto:hakimbro909@gmail.com">hakimbro909@gmail.com</a></li>
             <li>Tiktok: <a href="https://www.tiktok.com/@haqimie35?is_from_webapp=1&sender_device=pc">QimieXG</a></li>
             <li>Discord: <a href="https://discord.gg/bneyUCU2Wr">QimieXG Discord Server</a></li>
-            <li>SocioBuzz: <a href="https://sociabuzz.com/haqimiestp/donate">Donation</a></li>
+            <li>Sociobuzz: <a href="https://sociabuzz.com/haqimiestp/donate">Donation</a></li>
         </ul>
     </section>
 
@@ -183,6 +211,24 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+    <script>
+        function submitForm() {
+            // Get form values
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var description = document.getElementById('description').value;
+
+            // Construct email body
+            var emailBody = "Name: " + name + "\n";
+            emailBody += "Email: " + email + "\n";
+            emailBody += "Phone Number: " + phone + "\n";
+            emailBody += "Description:\n" + description;
+
+            // Send email
+            window.location.href = "mailto:hakimbro909@gmail.com?subject=Contact Form Submission&body=" + encodeURIComponent(emailBody);
+        }
+    </script>
 </body>
 
 </html>
